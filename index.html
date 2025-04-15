@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>818 Inventions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+                  url('https://cdn.wallpapersafari.com/4/52/lLRAJm.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      background-color: #fff;
+      padding: 40px 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #666;
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+    progress {
+      width: 100%;
+      height: 30px;
+      appearance: none;
+      margin-top: 15px;
+    }
+    progress::-webkit-progress-bar {
+      background-color: #eee;
+      border-radius: 10px;
+    }
+    progress::-webkit-progress-value {
+      background: linear-gradient(90deg, #76c7c0, #63a4ff);
+      border-radius: 10px;
+    }
+    progress::-moz-progress-bar {
+      background: linear-gradient(90deg, #76c7c0, #63a4ff);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>818 Inventions</h1>
+  </header>
+  <div class="container">
+    <h2>Progress Status</h2>
+    <p>3 out of 818 reached</p>
+    <progress value="3" max="818"></progress>
+  </div>
+</body>
+</html>
