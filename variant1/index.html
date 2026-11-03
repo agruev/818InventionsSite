@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>818 Inventions</title>
+  <meta name="description" content="Small inventions that solve real problems. The goal: 818.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&family=Permanent+Marker&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="./"><span class="plate mono">818</span>inventions</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wall">
+      <div class="graffiti" aria-hidden="true">
+        <svg class="cobweb cobweb-left" viewBox="0 0 160 160"><path d="M0 0 L158.4 22.2 M0 0 L145 67.7 M0 0 L113 113 M0 0 L67.7 145 M0 0 L22.2 158.4 M39.6 5.6 Q33.4 9.9 36.2 16.9 Q28.4 19.9 28.3 28.3 Q19.9 28.4 16.9 36.2 Q9.9 33.4 5.6 39.6 M79.2 11.1 Q66.7 19.8 72.5 33.8 Q56.8 39.8 56.6 56.6 Q39.8 56.8 33.8 72.5 Q19.8 66.7 11.1 79.2 M123.8 17.4 Q104.3 30.9 113.3 52.9 Q88.7 62.2 88.4 88.4 Q62.2 88.7 52.9 113.3 Q30.9 104.3 17.4 123.8"/></svg>
+        <svg class="cobweb cobweb-right" viewBox="0 0 160 160"><path d="M0 0 L158.4 22.2 M0 0 L145 67.7 M0 0 L113 113 M0 0 L67.7 145 M0 0 L22.2 158.4 M39.6 5.6 Q33.4 9.9 36.2 16.9 Q28.4 19.9 28.3 28.3 Q19.9 28.4 16.9 36.2 Q9.9 33.4 5.6 39.6 M79.2 11.1 Q66.7 19.8 72.5 33.8 Q56.8 39.8 56.6 56.6 Q39.8 56.8 33.8 72.5 Q19.8 66.7 11.1 79.2 M123.8 17.4 Q104.3 30.9 113.3 52.9 Q88.7 62.2 88.4 88.4 Q62.2 88.7 52.9 113.3 Q30.9 104.3 17.4 123.8"/></svg>
+        <svg class="spider" viewBox="0 0 30 110"><path class="spider-thread" d="M15 0 V80"/><circle cx="15" cy="80" r="2.5"/><circle cx="15" cy="87" r="4.5"/><path class="spider-legs" d="M11 84 l-7 -5 M11 87 l-8 0 M11 90 l-7 5 M12 92 l-4 7 M19 84 l7 -5 M19 87 l8 0 M19 90 l7 5 M18 92 l4 7"/></svg>
+        <svg class="doodle crack wide-only" viewBox="0 0 44 100"><path d="M2 0 L14 22 L10 38 L24 58 L20 74 L34 98 M14 22 L28 30 M24 58 L40 62"/></svg>
+        <span class="tag spray-2 mid-only" style="top: 6%; left: calc(50% + 70px); transform: rotate(-7deg);">SLEEP IS FOR THE WEAK</span>
+      </div>
+
+      <div class="wrap">
+        <div class="hero">
+          <div>
+            <h1 class="sr-only">818 Inventions</h1>
+            <div class="chat">
+              <p class="bubble out"><span class="who mono">outside</span>Knock, knock.</p>
+              <p class="bubble in"><span class="who mono">inside</span>Who's there?</p>
+              <p class="bubble out"><span class="who mono">outside</span>The housekeeper&hellip;</p>
+              <p class="bubble out punch"><span class="who mono">also outside</span>&hellip;and the police!</p>
+            </div>
+
+            <div class="progress">
+              <div class="progress-label">
+                <span><strong class="mono" id="count">0</strong> / <span class="mono" id="goal">818</span> shipped</span>
+                <span><span class="mono" id="left">818</span> to go</span>
+              </div>
+              <div class="progress-track" id="progress" role="progressbar" aria-label="Inventions shipped" aria-valuemin="0" aria-valuemax="818" aria-valuenow="0">
+                <div class="progress-fill" id="fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <svg class="door" id="door" viewBox="0 0 220 330" role="button" tabindex="0" aria-label="Knock on door 818">
+            <ellipse class="door-glow" cx="110" cy="318" rx="100" ry="12"/>
+            <rect class="door-frame" x="10" y="10" width="200" height="302" rx="4"/>
+            <rect class="door-leaf" x="24" y="22" width="172" height="290" rx="2"/>
+            <rect class="door-panel" x="44" y="104" width="132" height="80" rx="3"/>
+            <rect class="door-panel" x="44" y="200" width="132" height="92" rx="3"/>
+            <rect class="door-plate" x="70" y="44" width="80" height="36" rx="5"/>
+            <circle class="door-screw" cx="78" cy="62" r="2"/>
+            <circle class="door-screw" cx="142" cy="62" r="2"/>
+            <text class="door-number" x="110" y="69" text-anchor="middle">818</text>
+            <rect class="door-handle" x="160" y="186" width="24" height="7" rx="3.5"/>
+            <circle class="door-handle" cx="166" cy="190" r="7"/>
+            <path class="door-hanger-string" d="M166 196 L158 214 M166 196 L174 214"/>
+            <rect class="door-hanger" x="140" y="212" width="52" height="64" rx="6"/>
+            <text class="door-hanger-text" x="166" y="238" text-anchor="middle">DO NOT</text>
+            <text class="door-hanger-text" x="166" y="250" text-anchor="middle">DISTURB</text>
+            <text class="door-hanger-small" x="166" y="265" text-anchor="middle">inventing</text>
+            <rect class="door-light" x="24" y="308" width="172" height="4"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="hall">
+      <div class="wrap">
+        <h2 class="section-title">Inventions</h2>
+      </div>
+
+      <div class="corridor-nav">
+        <button class="walk walk-left" id="walk-left" type="button" aria-label="Walk left">&larr;</button>
+        <div class="corridor" id="grid"></div>
+        <button class="walk walk-right" id="walk-right" type="button" aria-label="Walk right">&rarr;</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; 818 Inventions</span>
+      <span>Made behind door 818.</span>
+    </div>
+  </footer>
+
+  <script src="assets/projects.js"></script>
+  <script>renderHome();</script>
+</body>
+</html>

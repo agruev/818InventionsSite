@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>818 Inventions</title>
+  <meta name="description" content="Small inventions that solve real problems. The goal: 818.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/room.css">
+</head>
+<body>
+  <header class="hud">
+    <div class="hud-in">
+      <a class="hud-title" href="./">818<span>&middot;</span>INVENTIONS</a>
+      <div class="hud-score">
+        <span>ITEMS</span>
+        <span><b id="count">000</b>/<b id="goal">818</b></span>
+        <div class="hud-bar" role="progressbar" aria-label="Inventions shipped"><i id="fill"></i></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="room" id="room">
+    <h1 class="sr-only">818 Inventions</h1>
+    <div id="wall-decor" aria-hidden="true"></div>
+
+    <div class="shelf-unit" id="shelves"></div>
+
+    <p class="press">&#9654; PICK AN ITEM</p>
+  </main>
+
+  <footer class="floor">
+    <div>&copy; 818 INVENTIONS</div>
+    <div>MADE BEHIND DOOR 818</div>
+  </footer>
+
+  <script src="assets/projects.js"></script>
+  <script src="assets/room.js"></script>
+  <script>renderRoom();</script>
+</body>
+</html>

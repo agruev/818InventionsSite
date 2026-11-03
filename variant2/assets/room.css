@@ -1,0 +1,319 @@
+/* 8-bit dorm room: torn wallpaper, cheap metal shelves, one pixel-art item per invention */
+:root {
+  --ink: #10121a;
+  --paper: #f4f1e8;
+  --accent: #ff5a1f;
+  --gold: #ffd23f;
+  --steel-light: #d3d7dc;
+  --steel: #a6acb4;
+  --steel-dark: #6f747c;
+  --slot: #2b2e33;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+svg { display: block; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* HUD on top, like a game score bar */
+.hud {
+  background: var(--ink);
+  border-bottom: 4px solid #000;
+}
+.hud-in {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.hud-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+.hud-title span { color: var(--accent); }
+.hud-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+}
+.hud-score b { color: var(--gold); font-weight: normal; }
+.hud-bar {
+  width: 120px;
+  height: 14px;
+  padding: 2px;
+  border: 2px solid #fff;
+  background: #000;
+}
+.hud-bar i {
+  display: block;
+  height: 100%;
+  min-width: 4px;
+  background: var(--accent);
+}
+
+/* The room wall */
+.room {
+  position: relative;
+  overflow: hidden;
+  padding: 150px 16px 130px;
+  background-color: #b8a77a;
+  background-size: 48px 48px;
+  image-rendering: pixelated;
+}
+/* Dithered grime creeping up from the floor */
+.room::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 96px;
+  background: repeating-conic-gradient(rgba(60, 40, 10, 0.2) 0 25%, transparent 0 50%) 0 0 / 8px 8px;
+  pointer-events: none;
+}
+.room::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 96px;
+  height: 48px;
+  background: repeating-conic-gradient(rgba(60, 40, 10, 0.12) 0 25%, transparent 0 50%) 0 0 / 16px 16px;
+  pointer-events: none;
+}
+#wall-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.decor { position: absolute; }
+.decor.flip svg { transform: scaleX(-1); }
+
+/* Cheap slotted-angle metal shelving */
+.shelf-unit {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+.post {
+  position: absolute;
+  z-index: 2;
+  top: -30px;
+  bottom: -130px;
+  width: 18px;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 10px, var(--slot) 10px 18px) 6px 0 / 6px 100% no-repeat,
+    linear-gradient(to right, var(--steel-dark) 0 4px, var(--steel) 4px 14px, var(--steel-dark) 14px);
+  box-shadow: 4px 0 0 rgba(0, 0, 0, 0.25);
+}
+.post.left { left: 0; }
+.post.right { right: 0; }
+.shelf {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  height: 200px;
+  padding-bottom: 16px;
+}
+.shelf::after {
+  content: '';
+  position: absolute;
+  left: -18px;
+  right: -18px;
+  bottom: 0;
+  height: 16px;
+  background:
+    linear-gradient(#3b3f45, #3b3f45) 26px 6px / 4px 4px no-repeat,
+    linear-gradient(#3b3f45, #3b3f45) calc(100% - 26px) 6px / 4px 4px no-repeat,
+    linear-gradient(to bottom, var(--steel-light) 0 4px, var(--steel) 4px 12px, var(--steel-dark) 12px 16px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Items on the shelves */
+.slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.item {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+.item svg,
+.junk svg {
+  filter: drop-shadow(4px 0 0 rgba(0, 0, 0, 0.25));
+}
+.item:hover svg,
+.item:focus-visible svg {
+  animation: hop 0.6s steps(3) infinite;
+}
+@keyframes hop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.item:focus-visible { outline: 4px dashed #fff; outline-offset: 8px; }
+
+/* 8-bit dialog box shown on hover */
+.bubble {
+  position: absolute;
+  z-index: 5;
+  bottom: calc(100% + 22px);
+  left: 50%;
+  display: none;
+  width: 240px;
+  padding: 10px 12px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 4px var(--ink), 8px 8px 0 4px rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.1;
+  text-align: left;
+}
+.bubble b {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  font-weight: normal;
+  color: var(--gold);
+}
+.bubble em {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  font-style: normal;
+  color: var(--accent);
+}
+.item:hover .bubble,
+.item:focus-visible .bubble { display: block; }
+
+/* Price-tag style label taped to the shelf lip */
+.label {
+  position: absolute;
+  bottom: -34px;
+  z-index: 3;
+  padding: 4px 6px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.6;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+.label i { display: block; font-style: normal; color: var(--accent); }
+
+.press {
+  position: relative;
+  z-index: 1;
+  margin: 80px 0 0;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #000;
+  animation: blink 1.2s steps(1) infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Cockroaches */
+.roach {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+.roach .f2 { position: absolute; inset: 0; }
+.roach .f1 { animation: frame-a 0.24s steps(1) infinite; }
+.roach .f2 { animation: frame-b 0.24s steps(1) infinite; }
+@keyframes frame-a { 0% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes frame-b { 0% { opacity: 0; } 50% { opacity: 1; } }
+
+.roach-1 { animation: crawl-1 28s linear infinite; }
+@keyframes crawl-1 {
+  0% { left: -40px; top: 20%; }
+  40%, 48% { left: 45%; top: 24%; }
+  100% { left: 105%; top: 16%; }
+}
+.roach-2 { left: 88%; top: -40px; animation: crawl-2 34s linear 4s infinite; }
+@keyframes crawl-2 {
+  0% { top: -40px; transform: rotate(90deg); }
+  55%, 60% { top: 50%; transform: rotate(100deg); }
+  64% { top: 52%; transform: rotate(65deg); }
+  100% { top: 105%; transform: rotate(90deg); }
+}
+.roach-3 { left: 105%; top: 80%; animation: crawl-3 22s linear 9s infinite; }
+@keyframes crawl-3 {
+  0% { left: 105%; top: 82%; transform: scaleX(-1); }
+  100% { left: -40px; top: 78%; transform: scaleX(-1); }
+}
+.roach-shelf { bottom: 16px; left: 0; animation: crawl-shelf 18s linear infinite; }
+@keyframes crawl-shelf {
+  0% { left: 0; transform: none; }
+  45% { left: calc(100% - 40px); transform: none; }
+  50% { left: calc(100% - 40px); transform: scaleX(-1); }
+  95% { left: 0; transform: scaleX(-1); }
+  100% { left: 0; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roach, .roach .f1, .roach .f2, .press, .item:hover svg, .item:focus-visible svg { animation: none; }
+  .roach .f2 { opacity: 0; }
+}
+
+/* Floor */
+.floor {
+  padding: 28px 16px;
+  border-top: 12px solid #3a3128;
+  background: repeating-conic-gradient(#6a5e48 0 25%, #594f3c 0 50%) 0 0 / 32px 32px;
+  color: #e8dcc0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+@media (max-width: 699px) {
+  .decor.wide { display: none; }
+  .room { padding-top: 130px; }
+  .shelf { height: 180px; }
+  .hud-title { font-size: 12px; }
+}
